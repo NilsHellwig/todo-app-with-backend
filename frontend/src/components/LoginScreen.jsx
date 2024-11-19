@@ -64,22 +64,6 @@ function LoginScreen({ onLogin }) {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("jwt"); // JWT entfernen
-    setIsLoggedIn(false);
-    setUsername("");
-    setPassword("");
-  };
-
-  if (isLoggedIn) {
-    return (
-      <div className="login-screen">
-        <h1>Willkommen!</h1>
-        <p>Du bist eingeloggt.</p>
-        <button onClick={handleLogout}>Ausloggen</button>
-      </div>
-    );
-  }
 
   return (
     <div className="login-screen">

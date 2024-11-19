@@ -9,7 +9,7 @@ function TaskItem({ task }) {
 
   const handleDelete = async () => {
     try {
-      await deleteTask(task.id, JWT);
+      await deleteTask(task._id, JWT);
       const newTaskList = taskList.filter((t) => t.id !== task.id);
       setTaskList(newTaskList);
     } catch (error) {

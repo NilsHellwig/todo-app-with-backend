@@ -23,12 +23,21 @@ async function addTask(taskText, JWT) {
 }
 
 async function deleteTask(taskId, JWT) {
-  await fetch(`${API_URL}/tasks/${taskId}`, {
-    method: "DELETE",
-    headers: {
-      "Authorization": `Bearer ${JWT}`,
-    },
-  });
+  try {
+    const response = await fetch(`${API_URL}/tasks/${taskId}`, {
+      method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${JWT}`,
+      },
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || "Fehler beim Löschen des Tasks");
+    }
+  } catch (err) {
+    console.error("Fehler:", err.message);
+  }
 }
 
 async function updateTask(task, JWT) {

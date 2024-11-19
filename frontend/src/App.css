@@ -1,0 +1,148 @@
+:root {
+  --darkest: black;
+  --dark: #444444;
+  --grey: #b5b5b5;
+  --pink: #ec4899;
+  --light: #f9f9fb;
+  --lighter: #f7f7f7;
+  --lightest: white;
+  --light-red: #ffdada;
+  --dark-red: #5b0000;
+}
+
+* {
+  font-family: "Manrope", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: var(--light);
+  margin: 15px;
+}
+
+header {
+  max-width: 800px;
+  width: 100%;
+  margin: 12px auto;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+main {
+  max-width: 800px;
+  width: 100%;
+  margin: 24px auto;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--grey);
+}
+
+#new-task-form {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--lightest);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 82, 0.2);
+}
+
+input,
+button {
+  appearance: none; /* /* https://developer.mozilla.org/en-US/docs/Web/CSS/appearance */
+  border: none;
+  outline: none;
+  background: none;
+}
+
+#new-task-input {
+  padding: 14px;
+  font-weight: 300;
+  width: 100%;
+}
+
+#new-task-input::placeholder {
+  color: var(--grey);
+}
+
+#new-task-input:-webkit-autofill {
+  -webkit-background-clip: text; /* Safari, Chrome, Opera */
+  background-clip: text; /* Firefox */
+}
+
+#new-task-submit {
+  padding: 0px 14px;
+  border-left: 1px solid #f1f1f1;
+  font-weight: 800;
+  cursor: pointer;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: 0.2s;
+}
+
+#new-task-submit:hover {
+  background-color: var(--darkest);
+  color: var(--lightest);
+}
+
+#tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--lightest);
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.task .text {
+  width: 100%;
+  margin-right: 10px;
+  transition: 0.2s;
+}
+
+.task .text:not(:read-only) {
+  color: var(--pink);
+}
+
+.task-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.task-actions button {
+  background-color: var(--lighter);
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.task-actions button:hover {
+  color: var(--lightest);
+  background-color: var(--dark);
+}
+
+.task-actions .delete {
+  background-color: var(--light-red);
+  color: var(--dark-red);
+}
+
+.task-actions .delete:hover {
+  background-color: var(--dark-red);
+  color: var(--light-red);
+}

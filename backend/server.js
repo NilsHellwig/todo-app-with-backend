@@ -94,8 +94,6 @@ app.post("/tasks", authenticate, async (req, res) => {
 });
 
 app.delete("/tasks/:id", authenticate, async (req, res) => {
-  console.log("---->>", req.params);
-  
   try {
     const task = await Task.findOneAndDelete({ _id: req.params.id, userId: req.user.id });
     if (!task) {

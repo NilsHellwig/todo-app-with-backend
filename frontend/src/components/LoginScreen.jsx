@@ -70,7 +70,6 @@ function LoginScreen({ onLogin }) {
       <form onSubmit={isRegistering ? handleRegister : handleLogin} className="login-form">
         <label>Benutzername:</label>
         <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
-
         <label>Passwort:</label>
         <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <button type="submit" className="black-button">

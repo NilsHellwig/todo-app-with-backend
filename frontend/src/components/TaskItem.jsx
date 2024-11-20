@@ -10,7 +10,7 @@ function TaskItem({ task }) {
   const handleDelete = async () => {
     try {
       await deleteTask(task._id, JWT);
-      const newTaskList = taskList.filter((t) => t.id !== task.id);
+      const newTaskList = taskList.filter((t) => t._id !== task._id);
       setTaskList(newTaskList);
     } catch (error) {
       alert("Fehler beim Löschen des Tasks!");
@@ -19,7 +19,7 @@ function TaskItem({ task }) {
 
   const handleInputChange = (event) => {
     const newTaskList = taskList.map((t) => {
-      if (t.id === task.id) {
+      if (t._id === task._id) {
         return { ...t, text: event.target.value }; // spread-operator
       } else {
         return t;

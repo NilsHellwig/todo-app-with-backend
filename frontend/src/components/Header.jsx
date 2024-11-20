@@ -15,8 +15,8 @@ function Header() {
         <img src={logo} alt="To-Do App Logo" />
         <h1>To-Do App</h1>
       </div>
-      <button onClick={handleLogout} className="logout-button">
-       Logout
+      <button onClick={handleLogout} className="black-button">
+       Ausloggen
       </button>
       <NewTaskForm/>
     </header>

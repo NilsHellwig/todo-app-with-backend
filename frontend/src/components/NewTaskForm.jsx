@@ -12,8 +12,8 @@ function NewTaskForm() {
       alert("Bitte gebe den Namen des Tasks ein!");
     } else {
       try {
-        const taskId = await addTask(taskInput, JWT);
-        const newTaskList = [...taskList, { id: taskId, text: taskInput }];
+        const newTask = await addTask(taskInput, JWT);
+        const newTaskList = [...taskList, { _id: newTask._id, text: taskInput }];
         setTaskList(newTaskList);
         setTaskInput("");
       } catch (error) {

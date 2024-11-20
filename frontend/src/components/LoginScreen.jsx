@@ -64,47 +64,24 @@ function LoginScreen({ onLogin }) {
     }
   };
 
-
   return (
     <div className="login-screen">
-      <h1>{isRegistering ? "Registrieren" : "Login"}</h1>
-      <form onSubmit={isRegistering ? handleRegister : handleLogin}>
-        <div className="form-group">
-          <label htmlFor="username">Benutzername:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Passwort:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        {error && <p className="error">{error}</p>}
-        <button type="submit">{isRegistering ? "Registrieren" : "Einloggen"}</button>
+      <h1>{isRegistering ? "Registrieren" : "Login"} - Todo App</h1>
+      <form onSubmit={isRegistering ? handleRegister : handleLogin} className="login-form">
+        <label>Benutzername:</label>
+        <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
+
+        <label>Passwort:</label>
+        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <button type="submit" className="black-button">
+          {isRegistering ? "Registrieren" : "Einloggen"}
+        </button>
       </form>
-      <p>
-        {isRegistering ? (
-          <>
-            Bereits ein Konto?{" "}
-            <button onClick={() => setIsRegistering(false)}>Zum Login</button>
-          </>
-        ) : (
-          <>
-            Noch kein Konto?{" "}
-            <button onClick={() => setIsRegistering(true)}>Jetzt registrieren</button>
-          </>
-        )}
-      </p>
+      {error && <p className="error">{error}</p>}
+      <p>{isRegistering ? "Bereits ein Konto erstellt?" : "Noch kein Konto erstellt?"}</p>
+      <button onClick={() => setIsRegistering(!isRegistering)} className="black-button">
+        {isRegistering ? "Zum Login" : "Jetzt registrieren"}
+      </button>
     </div>
   );
 }

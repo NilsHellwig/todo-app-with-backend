@@ -146,3 +146,48 @@ button {
   background-color: var(--dark-red);
   color: var(--light-red);
 }
+
+.login-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.black-button {
+  background-color: var(--lighter);
+  border-radius: 8px;
+  padding: 6px 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  border: 1px solid var(--grey);
+  margin-bottom: 20px;
+  width: max-content;
+}
+
+.black-button:hover {
+  background-color: var(--dark);
+  color: var(--lightest);
+}
+
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login-form input {
+  padding: 14px;
+  font-weight: 300;
+  border-radius: 12px;
+  border: 1px solid var(--light);
+  width: 200px;
+  border: #b5b5b5 solid 1px;
+}
+
+
+.login-form input:-webkit-autofill {
+  -webkit-background-clip: text; /* Safari, Chrome, Opera */
+  background-clip: text; /* Firefox */
+}

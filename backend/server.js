@@ -15,7 +15,8 @@ app.use(bodyParser.json());
 const url = "mongodb://localhost:27017/todo-app";
 
 // MongoDB Verbindung
-mongoose.connect(url, { useUnifiedTopology: true })
+mongoose
+  .connect(url, { useUnifiedTopology: true })
   .then(() => console.log("MongoDB verbunden"))
   .catch((err) => console.error("MongoDB Fehler:", err));
 
@@ -35,7 +36,7 @@ const Task = mongoose.model("Task", TaskSchema);
 
 // Middleware zur Authentifizierung
 const authenticate = (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1];
+  const token = req.headers.authorization?.split(" ")[1]; //  extrahiert das JWT-Token aus dem Authorization-Header, wobei sichergestellt wird, dass der Header existiert, bevor er split und verarbeitet wird. req.headers.authorization den Wert "Bearer <JWT-Token>" hat, wird split(" ") verwendet, um das Token zu extrahieren
   if (!token) return res.status(401).json({ error: "Token erforderlich" });
   try {
     const payload = jwt.verify(token, JWT_SECRET);
@@ -67,7 +68,6 @@ app.post("/register", async (req, res) => {
     res.status(400).json({ error: "Fehler bei der Registrierung" });
   }
 });
-
 
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
@@ -105,7 +105,6 @@ app.delete("/tasks/:id", authenticate, async (req, res) => {
   }
 });
 
-
 // In der PUT-Route
 app.put("/tasks/:id", authenticate, async (req, res) => {
   const { id } = req.params; // Extrahiere die ID aus den Routen-Parametern
@@ -117,11 +116,7 @@ app.put("/tasks/:id", authenticate, async (req, res) => {
   }
 
   try {
-    const task = await Task.findOneAndUpdate(
-      { _id: id, userId: req.user.id },
-      { text },
-      { new: true }
-    );
+    const task = await Task.findOneAndUpdate({ _id: id, userId: req.user.id }, { text }, { new: true });
 
     if (!task) {
       return res.status(404).json({ error: "Task nicht gefunden" });

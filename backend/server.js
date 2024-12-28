@@ -11,8 +11,8 @@ const JWT_SECRET = "supersecretkey"; // Verwende in Produktion eine sichere Meth
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
-
-const url = "mongodb://mongodb:27017/todo-app";
+// Innerhalb dieses Netzwerks können Container über ihren Namen (mongo) auf andere Container zugreifen. Docker verwaltet diese Zuordnungen automatisch, sodass der Containername mongo immer korrekt auf den MongoDB-Container verweist.
+const url = "mongodb://localhost:27017/todo-app"; // change to mongodb://mongo:27017/todo-app if using docker-compose
 
 // MongoDB Verbindung
 mongoose

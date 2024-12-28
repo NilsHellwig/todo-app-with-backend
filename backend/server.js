@@ -12,7 +12,7 @@ const JWT_SECRET = "supersecretkey"; // Verwende in Produktion eine sichere Meth
 app.use(cors());
 app.use(bodyParser.json());
 
-const url = "mongodb://localhost:27017/todo-app";
+const url = "mongodb://mongodb:27017/todo-app";
 
 // MongoDB Verbindung
 mongoose

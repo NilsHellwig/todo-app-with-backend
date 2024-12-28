@@ -16,9 +16,8 @@ services:
     depends_on:
       - mongo
     environment:
-      - MONGO_URL=mongodb://mongo:27017/myDatabase # Verbindung zu Mongo im Docker-Netzwerk
-      - JWT_SECRET=your-secret-key                # Falls dein Backend JWT verwendet
-
+      - MONGO_URL=mongodb://mongodb:27017/todo-app
+      
   frontend:
     build: ./frontend
     container_name: frontend
